@@ -14,6 +14,8 @@ modules:
     no-autogen: true
     config-opts:
       - --with-gtk=3
+      - --disable-webview
+      - --enable-no_exceptions #
     sources:
       - type: archive
         url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
@@ -24,6 +26,7 @@ modules:
     config-opts:
       - --with-qt=no
       - --with-wx=/app/bin
+      - --without-latex  
     sources:
       - type: archive
         url: https://prdownloads.sourceforge.net/gnuplot/5.4.10/gnuplot-5.4.10.tar.gz
