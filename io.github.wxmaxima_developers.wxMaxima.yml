@@ -23,6 +23,8 @@ modules:
     buildsystem: autotools
     no-autogen: true
     subdir: unix
+    post-install:
+      - chmod 755 /app/lib/libtcl8.6.so
     sources:
       - type: archive
         url: http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz
@@ -31,6 +33,9 @@ modules:
     buildsystem: autotools
     no-autogen: true
     subdir: unix
+    post-install:
+      - ln -s -r /app/bin/wish8.6 /app/bin/wish
+      - chmod 755 /app/lib/libtk8.6.so
     sources:
       - type: file
         url: http://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz
