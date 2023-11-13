@@ -37,7 +37,7 @@ modules:
       - ln -s -r /app/bin/wish8.6 /app/bin/wish
       - chmod 755 /app/lib/libtk8.6.so
     sources:
-      - type: file
+      - type: archive
         url: http://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz
         md5: 95adc33d55a133ee29bc9f81efdf31b2
   - name: gnuplot
