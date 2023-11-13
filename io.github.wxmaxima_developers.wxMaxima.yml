@@ -96,3 +96,5 @@ modules:
 cleanup-commands:
   - rm -r /app/include
   - rm /app/bin/wx-config /app/bin/wxrc /app/bin/wxrc-3.2
+  - rm -r /app/man
+  - rm -r /app/share/maxima/5.47.0/doc/*
