@@ -68,9 +68,13 @@ modules:
         fi
     sources:
       - type: file
+        only-arches:
+          - x86_64
         url: https://prdownloads.sourceforge.net/sbcl/2.3.10/sbcl-2.3.10-x86-64-linux-binary.tar.bz2
         sha256: 21c522e2330bfbbefd0c3dce7273590747a33d5a7be3a240beca913c9fa2299d
       - type: file
+        only-arches:
+          - aarch64
         url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.1.1-2_arm64.deb
         sha256: 6d3703e9c7e58e7dcf1b38b6c225855c90f7baf43fa2b8c4a1f63db90a6464ae
   - name: maxima
