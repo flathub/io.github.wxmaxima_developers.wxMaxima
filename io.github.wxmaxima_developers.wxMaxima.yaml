@@ -13,10 +13,13 @@ modules:
   - name: root
     buildsystem: cmake-ninja
     builddir: true
+    post-install:
+      - install -Dm644 io.github.wxmaxima_developers.wxMaxima.appdata.xml /app/share/appdata/io.github.wxmaxima_developers.wxMaxima.appdata.xml
     sources:
       - type: git
         url: https://github.com/root-project/root.git
         tag: v6-30-02
         commit: 49ae85f5fe419209f949b04e8253a0015b8946a0
-    post-install:
-      - install -Dm644 io.github.wxmaxima_developers.wxMaxima.appdata.xml /app/share/appdata/io.github.wxmaxima_developers.wxMaxima.appdata.xml
+      - type: file
+        path: io.github.wxmaxima_developers.wxMaxima.appdata.xml
+
