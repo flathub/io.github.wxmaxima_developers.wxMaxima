@@ -1,4 +1,4 @@
-app-id: cern.root.ROOT
+app-id: io.github.wxmaxima_developers.wxMaxima
 runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
@@ -19,4 +19,4 @@ modules:
         tag: v6-30-02
         commit: 49ae85f5fe419209f949b04e8253a0015b8946a0
     post-install:
-      - install -Dm644 cern.root.ROOT.appdata.xml /app/share/appdata/cern.root.ROOT.appdata.xml
+      - install -Dm644 io.github.wxmaxima_developers.wxMaxima.appdata.xml /app/share/appdata/io.github.wxmaxima_developers.wxMaxima.appdata.xml
