@@ -9,11 +9,44 @@ finish-args:
   - --filesystem=home:rw
   - --share=network
 modules:
+  - name: wxwidgets
+    buildsystem: autotools
+    no-autogen: true
+    config-opts:
+      - --with-gtk=3
+      - --disable-webview
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
+        sha256: c170ab67c7e167387162276aea84e055ee58424486404bba692c401730d1a67a
+  - name: tcl
+    buildsystem: autotools
+    no-autogen: true
+    subdir: unix
+    post-install:
+      - chmod 755 /app/lib/libtcl8.6.so
+    sources:
+      - type: archive
+        url: http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz
+        md5: 0e4358aade2f5db8a8b6f2f6d9481ec2
+  - name: tk
+    buildsystem: autotools
+    no-autogen: true
+    subdir: unix
+    post-install:
+      - ln -s -r /app/bin/wish8.6 /app/bin/wish
+      - chmod 755 /app/lib/libtk8.6.so
+    sources:
+      - type: archive
+        url: http://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz
+        md5: 95adc33d55a133ee29bc9f81efdf31b2
   - name: gnuplot
     buildsystem: autotools
     no-autogen: true
     config-opts:
       - --with-qt=no
+      - --with-wx=/app/bin
+      - --without-latex  
     sources:
       - type: archive
         url: https://prdownloads.sourceforge.net/gnuplot/5.4.10/gnuplot-5.4.10.tar.gz
@@ -49,15 +82,6 @@ modules:
       - type: archive
         url: https://prdownloads.sourceforge.net/maxima/Maxima-source/5.47.0-source/maxima-5.47.0.tar.gz
         sha256: 9104021b24fd53e8c03a983509cb42e937a925e8c0c85c335d7709a14fd40f7a
-  - name: wxwidgets
-    buildsystem: autotools
-    no-autogen: true
-    config-opts:
-      - --with-gtk
-    sources:
-      - type: archive
-        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
-        sha256: c170ab67c7e167387162276aea84e055ee58424486404bba692c401730d1a67a
   - name: wxmaxima
     buildsystem: cmake-ninja
     config-opts:
@@ -66,9 +90,11 @@ modules:
       - -DWXM_DISABLE_WEBVIEW=on
     sources:
       - type: archive
-        url: https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-23.10.0.tar.gz
-        sha256: 1c41352be0d88dc3b2413bab06f0a2e791579d61ac1e3a406c3349f5ea0fffe7
+        url: https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-23.12.0.tar.gz
+        sha256: abec636e96474adf6451e81728b16afaa83ed1a70b86a695fa083ecec65aaae1
         
 cleanup-commands:
   - rm -r /app/include
   - rm /app/bin/wx-config /app/bin/wxrc /app/bin/wxrc-3.2
+  - rm -r /app/man
+  - rm -r /app/share/maxima/5.47.0/doc/*
