@@ -16,9 +16,10 @@ modules:
       - --with-gtk=3
       - --disable-webview
     sources:
-      - type: archive
-        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
-        sha256: c170ab67c7e167387162276aea84e055ee58424486404bba692c401730d1a67a
+      - type: git
+        url: https://github.com/wxWidgets/wxWidgets.git
+        commit: 085a136dcb11aca5b1102193f006f8056d5f0876
+        tag: v3.2.4
   - name: tcl
     buildsystem: autotools
     no-autogen: true
@@ -93,6 +94,8 @@ modules:
       - type: archive
         url: https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-24.02.0.tar.gz
         sha256: 1bb5f9df2f23c1471e5a3f23a82c6caa0f1463c68ccd8ce3e6006fcca3a692db
+      - type: patch
+        path: src-Maxima.cpp.patch
         
 cleanup-commands:
   - rm -r /app/include
