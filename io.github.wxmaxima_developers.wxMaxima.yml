@@ -84,15 +84,15 @@ modules:
         sha256: 9104021b24fd53e8c03a983509cb42e937a925e8c0c85c335d7709a14fd40f7a
   - name: wxmaxima
     buildsystem: cmake-ninja
+    builddir: true
     config-opts:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=on
     sources:
-      - type: git
-        url: https://github.com/wxMaxima-developers/wxmaxima.git
-        commit: acfc824b81158516b5f89f91f0f090f1a482b299
-        tag: Version-24.02.0
+      - type: archive
+        url: https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-24.02.0.tar.gz
+        sha256: 1bb5f9df2f23c1471e5a3f23a82c6caa0f1463c68ccd8ce3e6006fcca3a692db
         
 cleanup-commands:
   - rm -r /app/include
