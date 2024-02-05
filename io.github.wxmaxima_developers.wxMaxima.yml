@@ -90,6 +90,10 @@ modules:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=on
+    post-install:
+      - install -Dm644 ../data/io.github.wxmaxima_developers.wxMaxima.png /app/share/icons/hicolor/128x128/apps/io.github.wxmaxima_developers.wxMaxima.png
+      - install -Dm644 ../data/io.github.wxmaxima_developers.wxMaxima.svg /app/share/icons/hicolor/scalable/apps/io.github.wxmaxima_developers.wxMaxima.svg
+
     sources:
       - type: archive
         url: https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-24.02.0.tar.gz
