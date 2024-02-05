@@ -16,10 +16,9 @@ modules:
       - --with-gtk=3
       - --disable-webview
     sources:
-      - type: git
-        url: https://github.com/wxWidgets/wxWidgets.git
-        commit: 085a136dcb11aca5b1102193f006f8056d5f0876
-        tag: v3.2.4
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
+        sha256: c170ab67c7e167387162276aea84e055ee58424486404bba692c401730d1a67a
   - name: tcl
     buildsystem: autotools
     no-autogen: true
@@ -89,8 +88,6 @@ modules:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=on
-    post-install:
-      - install -Dm644 ./data/io.github.wxmaxima_developers.wxMaxima.png /app/share/icons/hicolor/128x128/apps/io.github.wxmaxima_developers.wxMaxima.png
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
