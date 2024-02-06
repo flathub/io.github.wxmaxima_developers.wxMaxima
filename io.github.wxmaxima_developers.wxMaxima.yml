@@ -16,9 +16,10 @@ modules:
       - --with-gtk=3
       - --disable-webview
     sources:
-      - type: archive
-        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.3/wxWidgets-3.2.3.tar.bz2
-        sha256: c170ab67c7e167387162276aea84e055ee58424486404bba692c401730d1a67a
+      - type: git
+        url: https://github.com/wxWidgets/wxWidgets.git
+        commit: 085a136dcb11aca5b1102193f006f8056d5f0876
+        tag: v3.2.4
   - name: tcl
     buildsystem: autotools
     no-autogen: true
@@ -49,8 +50,8 @@ modules:
       - --without-latex  
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/gnuplot/5.4.10/gnuplot-5.4.10.tar.gz
-        sha256: 975d8c1cc2c41c7cedc4e323aff035d977feb9a97f0296dd2a8a66d197a5b27c
+        url: https://prdownloads.sourceforge.net/gnuplot/6.0.0/gnuplot-6.0.0.tar.gz
+        sha256: 635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
   - name: sbcl
     buildsystem: simple
     no-autogen: true
@@ -58,21 +59,21 @@ modules:
       - |
         arch=$(uname -m)
         if [[ $arch == "x86_64" ]] ; then
-           tar -xvjf sbcl-2.3.10-x86-64-linux-binary.tar.bz2
-           cd sbcl-2.3.10-x86-64-linux
+           tar -xvjf sbcl-2.4.1-x86-64-linux-binary.tar.bz2
+           cd sbcl-2.4.1-x86-64-linux
            INSTALL_ROOT=/app/ sh install.sh
         else
-           ar x sbcl_2.1.1-2_arm64.deb
+           ar x sbcl_2.3.7-2_arm64.deb
            tar -xJf data.tar.xz
            cp -ru ./usr/* /app/
         fi
     sources:
       - type: file
-        url: https://prdownloads.sourceforge.net/sbcl/2.3.10/sbcl-2.3.10-x86-64-linux-binary.tar.bz2
-        sha256: 21c522e2330bfbbefd0c3dce7273590747a33d5a7be3a240beca913c9fa2299d
+        url: https://prdownloads.sourceforge.net/sbcl/2.4.1/sbcl-2.4.1-x86-64-linux-binary.tar.bz2
+        sha256: 9ccf12f17f57923ede10f370756ab868ae949d435217854167e3dbbfb44cec53
       - type: file
-        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.1.1-2_arm64.deb
-        sha256: 6d3703e9c7e58e7dcf1b38b6c225855c90f7baf43fa2b8c4a1f63db90a6464ae
+        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.3.7-2_arm64.deb
+        sha256: b89796921c01af3df1f7f8bb9b8b526162c6690678ea66d2fc332fa9a48b0646
   - name: maxima
     buildsystem: autotools
     no-autogen: true
@@ -84,14 +85,21 @@ modules:
         sha256: 9104021b24fd53e8c03a983509cb42e937a925e8c0c85c335d7709a14fd40f7a
   - name: wxmaxima
     buildsystem: cmake-ninja
+    builddir: true
     config-opts:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=on
+    post-install:
+      - install -Dm644 ../data/io.github.wxmaxima_developers.wxMaxima.png /app/share/icons/hicolor/128x128/apps/io.github.wxmaxima_developers.wxMaxima.png
+      - install -Dm644 ../data/io.github.wxmaxima_developers.wxMaxima.svg /app/share/icons/hicolor/scalable/apps/io.github.wxmaxima_developers.wxMaxima.svg
+
     sources:
       - type: archive
-        url: https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-23.12.0.tar.gz
-        sha256: abec636e96474adf6451e81728b16afaa83ed1a70b86a695fa083ecec65aaae1
+        url: https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-24.02.0.tar.gz
+        sha256: 1bb5f9df2f23c1471e5a3f23a82c6caa0f1463c68ccd8ce3e6006fcca3a692db
+      - type: patch
+        path: src-Maxima.cpp.patch
         
 cleanup-commands:
   - rm -r /app/include
