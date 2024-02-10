@@ -90,16 +90,11 @@ modules:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=on
-    post-install:
-      - install -Dm644 ../data/io.github.wxmaxima_developers.wxMaxima.png /app/share/icons/hicolor/128x128/apps/io.github.wxmaxima_developers.wxMaxima.png
-      - install -Dm644 ../data/io.github.wxmaxima_developers.wxMaxima.svg /app/share/icons/hicolor/scalable/apps/io.github.wxmaxima_developers.wxMaxima.svg
-
     sources:
-      - type: archive
-        url: https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-24.02.0.tar.gz
-        sha256: 1bb5f9df2f23c1471e5a3f23a82c6caa0f1463c68ccd8ce3e6006fcca3a692db
-      - type: patch
-        path: src-Maxima.cpp.patch
+      - type: git
+        url: https://github.com/wxMaxima-developers/wxmaxima.git
+        tag: Version-24.02.1
+        commit: 8c095d47a8f7ff620fc833a4240b0da670ac73c6
         
 cleanup-commands:
   - rm -r /app/include
