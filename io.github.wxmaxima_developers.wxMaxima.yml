@@ -43,7 +43,6 @@ modules:
         md5: 95adc33d55a133ee29bc9f81efdf31b2
   - name: gnuplot
     buildsystem: autotools
-    no-autogen: true
     config-opts:
       - --with-qt=no
       - --with-wx=/app/bin
@@ -52,33 +51,17 @@ modules:
       - type: archive
         url: https://prdownloads.sourceforge.net/gnuplot/6.0.0/gnuplot-6.0.0.tar.gz
         sha256: 635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
-  - name: sbcl
-    buildsystem: simple
-    no-autogen: true
-    build-commands:
-      - |
-        arch=$(uname -m)
-        if [[ $arch == "x86_64" ]] ; then
-           tar -xvjf sbcl-2.4.1-x86-64-linux-binary.tar.bz2
-           cd sbcl-2.4.1-x86-64-linux
-           INSTALL_ROOT=/app/ sh install.sh
-        else
-           ar x sbcl_2.3.7-2_arm64.deb
-           tar -xJf data.tar.xz
-           cp -ru ./usr/* /app/
-        fi
+  - name: gcl
+    buildsystem: autotools
+    no-parallel-make: true
     sources:
-      - type: file
-        url: https://prdownloads.sourceforge.net/sbcl/2.4.1/sbcl-2.4.1-x86-64-linux-binary.tar.bz2
-        sha256: 9ccf12f17f57923ede10f370756ab868ae949d435217854167e3dbbfb44cec53
-      - type: file
-        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.3.7-2_arm64.deb
-        sha256: b89796921c01af3df1f7f8bb9b8b526162c6690678ea66d2fc332fa9a48b0646
+      - type: archive
+        url: http://mirrors.tripadvisor.com/gnu/gcl/gcl-2.6.14.tar.gz
+        sha256: 09f3417c512aa1733a638809d3a63ac290eeb9448be82795f5b6681bd307345a
   - name: maxima
     buildsystem: autotools
-    no-autogen: true
     config-opts:
-      - --enable-sbcl
+      - --enable-gcl
     sources:
       - type: archive
         url: https://prdownloads.sourceforge.net/maxima/Maxima-source/5.47.0-source/maxima-5.47.0.tar.gz
