@@ -54,6 +54,11 @@ modules:
   - name: gcl
     buildsystem: autotools
     no-parallel-make: true
+    build-options:
+      cflags: "" 
+      cxxflags: "" 
+      cxxflags-override: true
+      cflags-override: true
     sources:
       - type: archive
         url: http://mirrors.tripadvisor.com/gnu/gcl/gcl-2.6.14.tar.gz
