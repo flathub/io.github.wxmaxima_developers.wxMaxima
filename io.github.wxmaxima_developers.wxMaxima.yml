@@ -52,17 +52,24 @@ modules:
         url: https://prdownloads.sourceforge.net/gnuplot/6.0.0/gnuplot-6.0.0.tar.gz
         sha256: 635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
   - name: gcl
-    buildsystem: autotools
-    no-parallel-make: true
-    build-options:
-      cflags: "" 
-      cxxflags: "" 
-      cxxflags-override: true
-      cflags-override: true
+    buildsystem: simple
+    build-commands:
+      - |
+        arch=$(uname -m)
+        if [[ $arch == "x86_64" ]] ; then
+           ar x gcl_2.6.14-9_amd64.deb
+        else
+           ar x gcl_2.6.14-9_arm64.deb
+        fi
+        tar -xJf data.tar.xz
+        cp -ru ./usr/* /app/
     sources:
-      - type: archive
-        url: http://mirrors.tripadvisor.com/gnu/gcl/gcl-2.6.14.tar.gz
-        sha256: 09f3417c512aa1733a638809d3a63ac290eeb9448be82795f5b6681bd307345a
+      - type: file
+        url: http://ftp.de.debian.org/debian/pool/main/g/gcl/gcl_2.6.14-9_amd64.deb
+        sha256: 520df927a889ee50439d1ff4f5fec8408065d2e6f0ac3bed217579c611af5345
+      - type: file
+        url: http://ftp.de.debian.org/debian/pool/main/g/gcl/gcl_2.6.14-9_arm64.deb
+        sha256: 00099f1886865b878bd8dd2cb21cbcfc6618657584f9d8f31cb8bcb49642d12b
   - name: maxima
     buildsystem: autotools
     config-opts:
