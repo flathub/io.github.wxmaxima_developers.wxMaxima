@@ -1,0 +1,28 @@
+--- a/gcl	2024-03-11 07:56:32.000000000 -0500
++++ b/gcl	2024-05-25 20:56:59.995035470 -0500
+@@ -3,14 +3,13 @@
+ EXT=
+ VERS=2.6.14
+ 
+-. /etc/default/gcl$EXT
+ if ! set | grep -q -w GCL_ANSI ; then GCL_ANSI=$DEFAULT_GCL_ANSI ; fi
+ if ! set | grep -q -w GCL_PROF ; then GCL_PROF=$DEFAULT_GCL_PROF ; fi
+ 
+ if [ "$GCL_PROF" = "" ] ; then 
+-    DIR=/usr/lib/gcl-$VERS ; 
++    DIR=/app/lib/gcl-$VERS ; 
+ else
+-    DIR=/usr/lib/gcl-$VERS-prof ; 
++    DIR=/app/lib/gcl-$VERS-prof ; 
+ fi
+ 
+ if [ "$GCL_ANSI" = "" ] ; then 
+@@ -22,7 +21,7 @@
+ 
+ exec $SYS/$EXE -dir $SYS/ -libdir $DIR/ \
+    -eval '(setq si::*allow-gzipped-file* t)' \
+-   -eval '(setq si::*tk-library* "/usr/lib/tk8.6")' \
++   -eval '(setq si::*tk-library* "/app/lib/tk8.6")' \
+      "$@"
+ 
+ # other options: -load /tmp/foo.o -load jo.lsp -eval "(joe 3)"
