@@ -61,21 +61,21 @@ modules:
       - |
         arch=$(uname -m)
         if [[ $arch == "x86_64" ]] ; then
-           tar -xvjf sbcl-2.4.1-x86-64-linux-binary.tar.bz2
-           cd sbcl-2.4.1-x86-64-linux
+           tar -xvjf sbcl-2.4.7-x86-64-linux-binary.tar.bz2
+           cd sbcl-2.4.7-x86-64-linux
            INSTALL_ROOT=/app/ sh install.sh
         else
-           ar x sbcl_2.3.7-2_arm64.deb
+           ar x sbcl_2.4.7-2_arm64.deb
            tar -xJf data.tar.xz
            cp -ru ./usr/* /app/
         fi
     sources:
       - type: file
-        url: https://prdownloads.sourceforge.net/sbcl/2.4.1/sbcl-2.4.1-x86-64-linux-binary.tar.bz2
-        sha256: 9ccf12f17f57923ede10f370756ab868ae949d435217854167e3dbbfb44cec53
+        url: http://prdownloads.sourceforge.net/sbcl/sbcl-2.4.7-x86-64-linux-binary.tar.bz2
+        sha256: 1f900cf99f2617f613fe0a6d3490d3e00aa5e9740c88a8c88022a0ac766b0457
       - type: file
-        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.3.7-2_arm64.deb
-        sha256: b89796921c01af3df1f7f8bb9b8b526162c6690678ea66d2fc332fa9a48b0646
+        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.4.7-2_arm64.deb
+        sha256: 30f9635c5aebc6d535c487252909127beaeb985e07738acbadaca869fd90c0d8
   - name: maxima
     buildsystem: autotools
     no-autogen: true
@@ -97,8 +97,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-24.05.0
-        commit: 32a43a1b825773047f3692c2351c53e82cbd3dd0
+        tag: Version-24.08.0
+        commit: 5b94fbf1eca5ecf5682ca0b6a9dac0371ee5e1eb
         
 cleanup-commands:
   - rm -r /app/include
