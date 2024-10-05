@@ -78,7 +78,7 @@ modules:
   - name: maxima
     buildsystem: autotools
     config-opts:
-      - --enable-gcl
+      - --enable-sbcl
     sources:
       - type: archive
         url: https://prdownloads.sourceforge.net/maxima/Maxima-source/5.47.0-source/maxima-5.47.0.tar.gz
