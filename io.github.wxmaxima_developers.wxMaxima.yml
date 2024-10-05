@@ -43,7 +43,6 @@ modules:
         sha256: 8ffdb720f47a6ca6107eac2dd877e30b0ef7fac14f3a84ebbd0b3612cee41a94
   - name: gnuplot
     buildsystem: autotools
-    no-autogen: true
     config-opts:
       - --with-qt=no
       - --with-wx=/app/bin
@@ -78,9 +77,8 @@ modules:
         sha256: 30f9635c5aebc6d535c487252909127beaeb985e07738acbadaca869fd90c0d8
   - name: maxima
     buildsystem: autotools
-    no-autogen: true
     config-opts:
-      - --enable-sbcl
+      - --enable-gcl
     sources:
       - type: archive
         url: https://prdownloads.sourceforge.net/maxima/Maxima-source/5.47.0-source/maxima-5.47.0.tar.gz
