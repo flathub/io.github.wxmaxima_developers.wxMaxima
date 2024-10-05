@@ -1,6 +1,6 @@
 app-id: io.github.wxmaxima_developers.wxMaxima
 runtime: org.freedesktop.Platform
-runtime-version: "23.08"
+runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
 command: wxmaxima
 finish-args:
@@ -28,8 +28,8 @@ modules:
       - chmod 755 /app/lib/libtcl8.6.so
     sources:
       - type: archive
-        url: http://prdownloads.sourceforge.net/tcl/tcl8.6.13-src.tar.gz
-        md5: 0e4358aade2f5db8a8b6f2f6d9481ec2
+        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.14-src.tar.gz
+        sha256: 5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66
   - name: tk
     buildsystem: autotools
     no-autogen: true
@@ -39,8 +39,8 @@ modules:
       - chmod 755 /app/lib/libtk8.6.so
     sources:
       - type: archive
-        url: http://prdownloads.sourceforge.net/tcl/tk8.6.13-src.tar.gz
-        md5: 95adc33d55a133ee29bc9f81efdf31b2
+        url: https://prdownloads.sourceforge.net/tcl/tk8.6.14-src.tar.gz
+        sha256: 8ffdb720f47a6ca6107eac2dd877e30b0ef7fac14f3a84ebbd0b3612cee41a94
   - name: gnuplot
     buildsystem: autotools
     config-opts:
@@ -49,24 +49,36 @@ modules:
       - --without-latex  
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/gnuplot/6.0.0/gnuplot-6.0.0.tar.gz
-        sha256: 635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
-  - name: gcl
-    buildsystem: autotools
-    no-parallel-make: true
-    build-options:
-      cflags: "" 
-      cxxflags: "" 
-      cxxflags-override: true
-      cflags-override: true
+        url: https://prdownloads.sourceforge.net/gnuplot/5.4.10/gnuplot-5.4.10.tar.gz
+        sha256: 975d8c1cc2c41c7cedc4e323aff035d977feb9a97f0296dd2a8a66d197a5b27c
+        # url: https://prdownloads.sourceforge.net/gnuplot/6.0.0/gnuplot-6.0.0.tar.gz
+        # sha256: 635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
+  - name: sbcl
+    buildsystem: simple
+    no-autogen: true
+    build-commands:
+      - |
+        arch=$(uname -m)
+        if [[ $arch == "x86_64" ]] ; then
+           tar -xvjf sbcl-2.4.7-x86-64-linux-binary.tar.bz2
+           cd sbcl-2.4.7-x86-64-linux
+           INSTALL_ROOT=/app/ sh install.sh
+        else
+           ar x sbcl_2.4.7-2_arm64.deb
+           tar -xJf data.tar.xz
+           cp -ru ./usr/* /app/
+        fi
     sources:
-      - type: archive
-        url: http://mirrors.tripadvisor.com/gnu/gcl/gcl-2.6.14.tar.gz
-        sha256: 09f3417c512aa1733a638809d3a63ac290eeb9448be82795f5b6681bd307345a
+      - type: file
+        url: http://prdownloads.sourceforge.net/sbcl/sbcl-2.4.7-x86-64-linux-binary.tar.bz2
+        sha256: 1f900cf99f2617f613fe0a6d3490d3e00aa5e9740c88a8c88022a0ac766b0457
+      - type: file
+        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.4.7-2_arm64.deb
+        sha256: 30f9635c5aebc6d535c487252909127beaeb985e07738acbadaca869fd90c0d8
   - name: maxima
     buildsystem: autotools
     config-opts:
-      - --enable-gcl
+      - --enable-sbcl
     sources:
       - type: archive
         url: https://prdownloads.sourceforge.net/maxima/Maxima-source/5.47.0-source/maxima-5.47.0.tar.gz
@@ -83,8 +95,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-24.05.0
-        commit: 32a43a1b825773047f3692c2351c53e82cbd3dd0
+        tag: Version-24.08.0
+        commit: 5b94fbf1eca5ecf5682ca0b6a9dac0371ee5e1eb
         
 cleanup-commands:
   - rm -r /app/include
