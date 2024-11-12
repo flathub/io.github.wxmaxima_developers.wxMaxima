@@ -97,7 +97,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-24.08.0
+        tag: Version-24.11.0
         commit: 5b94fbf1eca5ecf5682ca0b6a9dac0371ee5e1eb
         
 cleanup-commands:
