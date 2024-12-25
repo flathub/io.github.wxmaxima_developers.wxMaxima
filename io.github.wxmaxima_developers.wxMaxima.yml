@@ -18,8 +18,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
-        commit: 085a136dcb11aca5b1102193f006f8056d5f0876
-        tag: v3.2.4
+        commit: 5ff25322553c1870cf20a2e1ba6f20ed50d9fe9a
+        tag: v3.2.6
   - name: tcl
     buildsystem: autotools
     no-autogen: true
@@ -28,8 +28,8 @@ modules:
       - chmod 755 /app/lib/libtcl8.6.so
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.14-src.tar.gz
-        sha256: 5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66
+        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz
+        sha256: 91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5
   - name: tk
     buildsystem: autotools
     no-autogen: true
@@ -39,8 +39,8 @@ modules:
       - chmod 755 /app/lib/libtk8.6.so
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tk8.6.14-src.tar.gz
-        sha256: 8ffdb720f47a6ca6107eac2dd877e30b0ef7fac14f3a84ebbd0b3612cee41a94
+        url: https://prdownloads.sourceforge.net/tcl/tk8.6.16-src.tar.gz
+        sha256: be9f94d3575d4b3099d84bc3c10de8994df2d7aa405208173c709cc404a7e5fe
   - name: gnuplot
     buildsystem: autotools
     no-autogen: true
@@ -61,21 +61,21 @@ modules:
       - |
         arch=$(uname -m)
         if [[ $arch == "x86_64" ]] ; then
-           tar -xvjf sbcl-2.4.7-x86-64-linux-binary.tar.bz2
-           cd sbcl-2.4.7-x86-64-linux
+           tar -xvjf sbcl-2.4.11-x86-64-linux-binary.tar.bz2
+           cd sbcl-2.4.11-x86-64-linux
            INSTALL_ROOT=/app/ sh install.sh
         else
-           ar x sbcl_2.4.7-2_arm64.deb
+           ar x sbcl_2.4.11-1_arm64.deb
            tar -xJf data.tar.xz
            cp -ru ./usr/* /app/
         fi
     sources:
       - type: file
-        url: http://prdownloads.sourceforge.net/sbcl/sbcl-2.4.7-x86-64-linux-binary.tar.bz2
-        sha256: 1f900cf99f2617f613fe0a6d3490d3e00aa5e9740c88a8c88022a0ac766b0457
+        url: http://prdownloads.sourceforge.net/sbcl/sbcl-2.4.11-x86-64-linux-binary.tar.bz2
+        sha256: 25ffe843fca5179f53bdc7d5d6d63529235801874c37aadd731b6496c6ef7dd8
       - type: file
-        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.4.7-2_arm64.deb
-        sha256: 30f9635c5aebc6d535c487252909127beaeb985e07738acbadaca869fd90c0d8
+        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.4.11-1_arm64.deb
+        sha256: aa19353efff794c351d3b9816df29e46efea175d62f3f5278bba329ae96011b4
   - name: maxima
     buildsystem: autotools
     no-autogen: true
