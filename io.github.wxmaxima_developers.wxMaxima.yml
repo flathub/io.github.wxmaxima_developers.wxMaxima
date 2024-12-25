@@ -61,21 +61,21 @@ modules:
       - |
         arch=$(uname -m)
         if [[ $arch == "x86_64" ]] ; then
-           tar -xvjf sbcl-2.4.7-x86-64-linux-binary.tar.bz2
-           cd sbcl-2.4.7-x86-64-linux
+           tar -xvjf sbcl-2.4.11-x86-64-linux-binary.tar.bz2
+           cd sbcl-2.4.11-x86-64-linux
            INSTALL_ROOT=/app/ sh install.sh
         else
-           ar x sbcl_2.4.7-2_arm64.deb
+           ar x sbcl_2.4.11-1_arm64.deb
            tar -xJf data.tar.xz
            cp -ru ./usr/* /app/
         fi
     sources:
       - type: file
-        url: http://prdownloads.sourceforge.net/sbcl/sbcl-2.4.7-x86-64-linux-binary.tar.bz2
-        sha256: 1f900cf99f2617f613fe0a6d3490d3e00aa5e9740c88a8c88022a0ac766b0457
+        url: http://prdownloads.sourceforge.net/sbcl/sbcl-2.4.11-x86-64-linux-binary.tar.bz2
+        sha256: 25ffe843fca5179f53bdc7d5d6d63529235801874c37aadd731b6496c6ef7dd8
       - type: file
-        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.4.7-2_arm64.deb
-        sha256: 30f9635c5aebc6d535c487252909127beaeb985e07738acbadaca869fd90c0d8
+        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.4.11-1_arm64.deb
+        sha256: aa19353efff794c351d3b9816df29e46efea175d62f3f5278bba329ae96011b4
   - name: maxima
     buildsystem: autotools
     no-autogen: true
