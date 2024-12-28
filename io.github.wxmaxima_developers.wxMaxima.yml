@@ -95,7 +95,7 @@ modules:
     post-install:
       - rm -r /app/share/icons/hicolor/1024x1024
       - mkdir -p /app/share/fonts
-      - mv Helvetica.ttf /app/share/fonts/
+      - mv ../Helvetica.ttf /app/share/fonts/
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
