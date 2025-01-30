@@ -103,6 +103,8 @@ modules:
         commit: 0985c2d04f67588c7e33c63d033e6915f5630ea6
       - type: file
         path: Helvetica.ttf
+      - type: patch
+        path: io.github.wxmaxima_developers.wxMaxima.appdata.xml.patch
         
 cleanup-commands:
   - rm -r /app/include
