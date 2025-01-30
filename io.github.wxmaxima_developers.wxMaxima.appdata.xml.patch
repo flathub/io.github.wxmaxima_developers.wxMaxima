@@ -30,7 +30,7 @@
 -</ul>
 -</p>
 +      Fix some bugs and crashes.
-+    <p>
++    </p>
 +    <ul>
 +      <li>Remove the change label width popup menu (#1964).
 +      It was not working at all and caused crashes. And I think the
