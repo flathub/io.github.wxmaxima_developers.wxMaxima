@@ -99,8 +99,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-24.11.0
-        commit: 989833086944316ef408462767e5a624cd70b4d5
+        tag: Version-25.01.0
+        commit: 0985c2d04f67588c7e33c63d033e6915f5630ea6
       - type: file
         path: Helvetica.ttf
         
