@@ -65,7 +65,7 @@ modules:
            cd sbcl-2.4.11-x86-64-linux
            INSTALL_ROOT=/app/ sh install.sh
         else
-           ar x sbcl_2.4.11-1_arm64.deb
+           ar x sbcl_2.5.0-1_arm64.deb
            tar -xJf data.tar.xz
            cp -ru ./usr/* /app/
         fi
@@ -74,8 +74,8 @@ modules:
         url: http://prdownloads.sourceforge.net/sbcl/sbcl-2.4.11-x86-64-linux-binary.tar.bz2
         sha256: 25ffe843fca5179f53bdc7d5d6d63529235801874c37aadd731b6496c6ef7dd8
       - type: file
-        url: http://ftp.de.debian.org/debian/pool/main/s/sbcl/sbcl_2.4.11-1_arm64.deb
-        sha256: aa19353efff794c351d3b9816df29e46efea175d62f3f5278bba329ae96011b4
+        url: http://ftp.pl.debian.org/debian/pool/main/s/sbcl/sbcl_2.5.0-1_arm64.deb
+        sha256: a4f8fa10e527964d49759da92797030ae3680cc9eef45d5e10580bc7b75d8048
   - name: maxima
     buildsystem: autotools
     no-autogen: true
