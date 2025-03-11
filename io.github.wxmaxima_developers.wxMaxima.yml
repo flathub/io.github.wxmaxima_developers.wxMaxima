@@ -13,6 +13,7 @@ modules:
     no-autogen: true
     config-opts:
       - --disable-webview
+      - --with-gtk=4
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
