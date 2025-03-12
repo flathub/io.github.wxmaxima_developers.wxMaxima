@@ -1,7 +1,7 @@
 app-id: io.github.wxmaxima_developers.wxMaxima
-runtime: org.gnome.Platform
-runtime-version: "47"
-sdk: org.gnome.Sdk
+runtime: org.kde.Platform
+runtime-version: "6.8"
+sdk: org.kde.Sdk
 command: wxmaxima
 finish-args:
   - --share=ipc
@@ -13,7 +13,7 @@ modules:
     no-autogen: true
     config-opts:
       - --disable-webview
-      - --with-gtk=4
+      - --with-qt
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
