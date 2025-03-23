@@ -92,6 +92,7 @@ modules:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=on
+      - -DCMAKE_BUILD_TYPE=Release
     post-install:
       - rm -r /app/share/icons/hicolor/1024x1024
       - mkdir -p /app/share/fonts
