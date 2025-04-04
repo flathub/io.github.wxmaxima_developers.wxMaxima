@@ -8,7 +8,22 @@ finish-args:
   - --socket=x11
   - --filesystem=home:rw
   - --share=network
+
+add-extensions:
+  io.github.wxmaxima_developers.wxMaxima.Plugin:
+    versions: stable;test;master
+    directory: plugins
+    subdirectories: true
+    no-autodownload: true
+    autodelete: true
+    add-ld-path: lib
+
 modules:
+  - name: extensions
+    buildsystem: simple
+    build-commands:
+      - install -d /app/plugins
+      
   - name: wxwidgets
     buildsystem: autotools
     no-autogen: true
