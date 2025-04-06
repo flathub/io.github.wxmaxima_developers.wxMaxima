@@ -25,12 +25,33 @@ modules:
     build-commands:
       - install -d /app/plugins
       
+  - name: webkitgtk #wxwidgets
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DPORT=GTK
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DENABLE_BUBBLEWRAP_SANDBOX=OFF
+      - -DENABLE_DOCUMENTATION=OFF
+      - -DENABLE_GAMEPAD=OFF
+      - -DENABLE_WEBDRIVER=OFF
+      - -DUSE_GTK4=OFF
+      - -DUSE_LIBBACKTRACE=OFF
+      - -DUSE_JPEGXL=OFF
+      - -DUSE_SOUP2=OFF #ON
+      - -DUSE_WPE_RENDERER=OFF
+      - -DCMAKE_COMPILE_WARNING_AS_ERROR=OFF
+    sources:
+      - type: archive
+        url: https://webkitgtk.org/releases/webkitgtk-2.49.1.tar.xz
+        sha256: 9c0a5ed606a7a6bdc71c2545633200c5a9a657639b0b6b1ec01f92f21d47ecba
+        
   - name: wxwidgets
     buildsystem: autotools
     no-autogen: true
     config-opts:
       - --with-gtk=3
-      - --disable-webview
+      - --enable-webview
+      - --enable-webviewwebkit
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
@@ -55,7 +76,7 @@ modules:
     config-opts:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
-      - -DWXM_DISABLE_WEBVIEW=on
+      - -DWXM_DISABLE_WEBVIEW=OFF
       - -DCMAKE_BUILD_TYPE=Release
     post-install:
       - rm -r /app/share/icons/hicolor/1024x1024
