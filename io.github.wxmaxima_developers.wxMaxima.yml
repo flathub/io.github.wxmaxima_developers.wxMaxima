@@ -53,6 +53,7 @@ modules:
       - -DUSE_SOUP2=ON
       - -DUSE_LIBSECRET=OFF
       - -DENABLE_SPELLCHECK=OFF
+      - -DUSE_WOFF2=OFF
     sources:
       - type: archive
         url: https://webkitgtk.org/releases/webkitgtk-2.49.1.tar.xz
