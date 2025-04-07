@@ -51,6 +51,7 @@ modules:
       - -DUSE_GTK4=OFF
       - -DUSE_LIBBACKTRACE=OFF
       - -DUSE_SOUP2=ON
+      - -DUSE_LIBSECRET=OFF
     sources:
       - type: archive
         url: https://webkitgtk.org/releases/webkitgtk-2.49.1.tar.xz
