@@ -25,7 +25,7 @@ modules:
     build-commands:
       - install -d /app/plugins
       
-  - shared-modules/libsoup/libsoup-2.4.json # webkitgtk
+  # - shared-modules/libsoup/libsoup-2.4.json # webkitgtk
   - name: unifdef # webkitgtk
     no-autogen: true
     make-install-args:
@@ -50,7 +50,7 @@ modules:
       - -DPORT=GTK
       - -DUSE_GTK4=OFF
       - -DUSE_LIBBACKTRACE=OFF
-      - -DUSE_SOUP2=ON
+      - -DUSE_SOUP2=OFF
       - -DUSE_LIBSECRET=OFF
       - -DENABLE_SPELLCHECK=OFF
       - -DUSE_WOFF2=OFF
