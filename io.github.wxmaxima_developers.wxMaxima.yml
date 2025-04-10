@@ -25,12 +25,48 @@ modules:
     build-commands:
       - install -d /app/plugins
       
+  # - shared-modules/libsoup/libsoup-2.4.json # webkitgtk
+  - name: unifdef # webkitgtk
+    no-autogen: true
+    make-install-args:
+      - prefix=${FLATPAK_DEST}
+    cleanup:
+      - '*'
+    sources:
+      - type: archive
+        url: https://dotat.at/prog/unifdef/unifdef-2.12.tar.xz
+        sha256: 43ce0f02ecdcdc723b2475575563ddb192e988c886d368260bc0a63aee3ac400
+  - name: webkitgtk # wxwidgets
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DENABLE_BUBBLEWRAP_SANDBOX=OFF
+      - -DENABLE_DOCUMENTATION=OFF
+      - -DENABLE_GAMEPAD=OFF
+      - -DENABLE_INTROSPECTION=OFF
+      - -DENABLE_MINIBROWSER=OFF
+      - -DENABLE_SPEECH_SYNTHESIS=OFF
+      - -DENABLE_WEBDRIVER=OFF
+      - -DPORT=GTK
+      - -DUSE_GTK4=OFF
+      - -DUSE_LIBBACKTRACE=OFF
+      - -DUSE_SOUP2=OFF
+      - -DUSE_LIBSECRET=OFF
+      - -DENABLE_SPELLCHECK=OFF
+      - -DUSE_WOFF2=OFF
+      - -DUSE_SYSTEM_SYSPROF_CAPTURE=NO
+    sources:
+      - type: archive
+        url: https://webkitgtk.org/releases/webkitgtk-2.49.1.tar.xz
+        sha256: 9c0a5ed606a7a6bdc71c2545633200c5a9a657639b0b6b1ec01f92f21d47ecba
+        
   - name: wxwidgets
     buildsystem: autotools
     no-autogen: true
     config-opts:
       - --with-gtk=3
-      - --disable-webview
+      - --enable-webview
+      - --enable-webviewwebkit
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
@@ -55,7 +91,7 @@ modules:
     config-opts:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
-      - -DWXM_DISABLE_WEBVIEW=on
+      - -DWXM_DISABLE_WEBVIEW=OFF
       - -DCMAKE_BUILD_TYPE=Release
     post-install:
       - rm -r /app/share/icons/hicolor/1024x1024
