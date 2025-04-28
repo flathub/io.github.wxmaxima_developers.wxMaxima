@@ -39,7 +39,7 @@ modules:
   - name: webkitgtk # wxwidgets
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DENABLE_BUBBLEWRAP_SANDBOX=OFF
       - -DENABLE_DOCUMENTATION=OFF
       - -DENABLE_GAMEPAD=OFF
