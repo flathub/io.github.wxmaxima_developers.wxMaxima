@@ -55,6 +55,7 @@ modules:
       - -DENABLE_SPELLCHECK=OFF
       - -DUSE_WOFF2=OFF
       - -DUSE_SYSTEM_SYSPROF_CAPTURE=NO
+      - -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
     sources:
       - type: archive
         url: https://webkitgtk.org/releases/webkitgtk-2.49.1.tar.xz
