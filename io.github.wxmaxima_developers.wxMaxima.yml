@@ -9,7 +9,6 @@ finish-args:
   - --filesystem=home:rw
   - --share=network
   - --env=PATH=/usr/bin:/app/bin:/app/plugins/maxima/bin
-
 add-extensions:
   io.github.wxmaxima_developers.wxMaxima.Plugin:
     versions: stable;test;master
