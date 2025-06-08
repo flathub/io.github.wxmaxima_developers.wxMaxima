@@ -38,6 +38,9 @@ modules:
         sha256: 43ce0f02ecdcdc723b2475575563ddb192e988c886d368260bc0a63aee3ac400
   - name: webkitgtk # wxwidgets
     buildsystem: cmake-ninja
+    build-options:
+      cflags: -DNDEBUG
+      cxxflags: -DNDEBUG
     config-opts:
       - -DCMAKE_BUILD_TYPE=None
       - -DENABLE_BUBBLEWRAP_SANDBOX=OFF
