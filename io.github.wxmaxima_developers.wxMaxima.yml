@@ -57,8 +57,8 @@ modules:
       - -DUSE_SYSTEM_SYSPROF_CAPTURE=OFF
     sources:
       - type: archive
-        url: https://webkitgtk.org/releases/webkitgtk-2.49.1.tar.xz
-        sha256: 9c0a5ed606a7a6bdc71c2545633200c5a9a657639b0b6b1ec01f92f21d47ecba
+        url: https://webkitgtk.org/releases/webkitgtk-2.48.3.tar.xz
+        sha256: d4dc5970f0fc6a529ff7fd67bcbfab2bbb5e91be789b2e9279640b3217a782c3
         
   - name: wxwidgets
     buildsystem: autotools
