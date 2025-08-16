@@ -62,9 +62,8 @@ modules:
       - mv ../Helvetica.ttf /app/share/fonts/
     sources:
       - type: git
-        url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-25.04.0
-        commit: 9f609cef5183e50882e549ccb1c12a61b7de8628
+        url: https://github.com/bztd/wxmaxima.git
+        commit: ce7a0be49cfef3facfc1462bd41ab70284cb9c5d
       - type: file
         path: Helvetica.ttf
         
