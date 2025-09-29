@@ -1,45 +1,41 @@
 app-id: io.github.wxmaxima_developers.wxMaxima
-runtime: org.kde.Platform
-runtime-version: "5.15-24.08"
-sdk: org.kde.Sdk
+runtime: org.gnome.Platform
+runtime-version: "49"
+sdk: org.gnome.Sdk
 command: wxmaxima
 finish-args:
   - --share=ipc
   - --socket=x11
-  - --filesystem=home
+  - --filesystem=home:rw
+  - --share=network
+  - --env=PATH=/usr/bin:/app/bin:/app/plugins/maxima/bin
+add-extensions:
+  io.github.wxmaxima_developers.wxMaxima.Plugin:
+    versions: stable;test;master
+    directory: plugins
+    subdirectories: true
+    no-autodownload: false
+    autodelete: true
+    add-ld-path: lib
+
 modules:
+  - name: extensions
+    buildsystem: simple
+    build-commands:
+      - install -d /app/plugins
+        
   - name: wxwidgets
     buildsystem: autotools
     no-autogen: true
     config-opts:
-      - --disable-webview
-      - --with-qt
+      - --with-gtk=3
+      - --enable-webview
+      - --enable-webviewwebkit
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
-        commit: 5ff25322553c1870cf20a2e1ba6f20ed50d9fe9a
-        tag: v3.2.6
-  - name: tcl
-    buildsystem: autotools
-    no-autogen: true
-    subdir: unix
-    post-install:
-      - chmod 755 /app/lib/libtcl8.6.so
-    sources:
-      - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz
-        sha256: 91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5
-  - name: tk
-    buildsystem: autotools
-    no-autogen: true
-    subdir: unix
-    post-install:
-      - ln -s -r /app/bin/wish8.6 /app/bin/wish
-      - chmod 755 /app/lib/libtk8.6.so
-    sources:
-      - type: archive
-        url: https://prdownloads.sourceforge.net/tcl/tk8.6.16-src.tar.gz
-        sha256: be9f94d3575d4b3099d84bc3c10de8994df2d7aa405208173c709cc404a7e5fe
+        commit: 8aef5f40b93958719771331ca03866b7b6fff6bf
+        tag: v3.2.8
   - name: gnuplot
     buildsystem: autotools
     no-autogen: true
@@ -49,64 +45,24 @@ modules:
       - --without-latex  
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/gnuplot/5.4.10/gnuplot-5.4.10.tar.gz
-        sha256: 975d8c1cc2c41c7cedc4e323aff035d977feb9a97f0296dd2a8a66d197a5b27c
-        # url: https://prdownloads.sourceforge.net/gnuplot/6.0.0/gnuplot-6.0.0.tar.gz
-        # sha256: 635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
-  - name: sbcl
-    buildsystem: simple
-    no-autogen: true
-    build-commands:
-      - |
-        arch=$(uname -m)
-        if [[ $arch == "x86_64" ]] ; then
-           tar -xvjf sbcl-2.4.11-x86-64-linux-binary.tar.bz2
-           cd sbcl-2.4.11-x86-64-linux
-           INSTALL_ROOT=/app/ sh install.sh
-        else
-           ar x sbcl_2.5.0-1_arm64.deb
-           tar -xJf data.tar.xz
-           cp -ru ./usr/* /app/
-        fi
-    sources:
-      - type: file
-        url: http://prdownloads.sourceforge.net/sbcl/sbcl-2.4.11-x86-64-linux-binary.tar.bz2
-        sha256: 25ffe843fca5179f53bdc7d5d6d63529235801874c37aadd731b6496c6ef7dd8
-      - type: file
-        url: http://ftp.pl.debian.org/debian/pool/main/s/sbcl/sbcl_2.5.0-1_arm64.deb
-        sha256: a4f8fa10e527964d49759da92797030ae3680cc9eef45d5e10580bc7b75d8048
-  - name: maxima
-    buildsystem: autotools
-    no-autogen: true
-    config-opts:
-      - --enable-sbcl
-    sources:
-      - type: archive
-        url: https://prdownloads.sourceforge.net/maxima/Maxima-source/5.47.0-source/maxima-5.47.0.tar.gz
-        sha256: 9104021b24fd53e8c03a983509cb42e937a925e8c0c85c335d7709a14fd40f7a
+        url: https://prdownloads.sourceforge.net/gnuplot/6.0.3/gnuplot-6.0.3.tar.gz
+        sha256: ec52e3af8c4083d4538152b3f13db47f6d29929a3f6ecec5365c834e77f251ab
   - name: wxmaxima
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
-      - -DWXM_DISABLE_WEBVIEW=on
+      - -DWXM_DISABLE_WEBVIEW=OFF
+      - -DCMAKE_BUILD_TYPE=Release
     post-install:
       - rm -r /app/share/icons/hicolor/1024x1024
-      - mkdir -p /app/share/fonts
-      - mv ../Helvetica.ttf /app/share/fonts/
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-25.01.0
-        commit: 0985c2d04f67588c7e33c63d033e6915f5630ea6
-      - type: file
-        path: Helvetica.ttf
-      - type: patch
-        path: io.github.wxmaxima_developers.wxMaxima.appdata.xml.patch
+        tag: Version-25.04.0
+        commit: 9f609cef5183e50882e549ccb1c12a61b7de8628
         
 cleanup-commands:
   - rm -r /app/include
   - rm /app/bin/wx-config /app/bin/wxrc /app/bin/wxrc-3.2
-  - rm -r /app/man
-  - rm -r /app/share/maxima/5.47.0/doc/*
