@@ -51,7 +51,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
+      - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.3
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=OFF
       - -DCMAKE_BUILD_TYPE=Release
@@ -64,4 +64,4 @@ modules:
         
 cleanup-commands:
   - rm -r /app/include
-  - rm /app/bin/wx-config /app/bin/wxrc /app/bin/wxrc-3.2
+  - rm /app/bin/wx-config /app/bin/wxrc /app/bin/wxrc-3.3
