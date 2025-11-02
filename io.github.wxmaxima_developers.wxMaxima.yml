@@ -34,8 +34,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
-        commit: 49c6810948f40c457e3d0848b9111627b5b61de5
-        tag: v3.3.1
+        commit: 8aef5f40b93958719771331ca03866b7b6fff6bf
+        tag: v3.2.8
   - name: gnuplot
     buildsystem: autotools
     no-autogen: true
