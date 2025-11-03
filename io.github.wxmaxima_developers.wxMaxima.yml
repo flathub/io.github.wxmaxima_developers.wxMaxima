@@ -1,7 +1,7 @@
 app-id: io.github.wxmaxima_developers.wxMaxima
-runtime: org.freedesktop.Platform
-runtime-version: "24.08"
-sdk: org.freedesktop.Sdk
+runtime: org.gnome.Platform
+runtime-version: "49"
+sdk: org.gnome.Sdk
 command: wxmaxima
 finish-args:
   - --share=ipc
@@ -29,7 +29,8 @@ modules:
     no-autogen: true
     config-opts:
       - --with-gtk=3
-      - --disable-webview
+      - --enable-webview
+      - --enable-webviewwebkit
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
@@ -44,17 +45,15 @@ modules:
       - --without-latex  
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/gnuplot/5.4.10/gnuplot-5.4.10.tar.gz
-        sha256: 975d8c1cc2c41c7cedc4e323aff035d977feb9a97f0296dd2a8a66d197a5b27c
-        # url: https://prdownloads.sourceforge.net/gnuplot/6.0.0/gnuplot-6.0.0.tar.gz
-        # sha256: 635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
+        url: https://prdownloads.sourceforge.net/gnuplot/6.0.3/gnuplot-6.0.3-c23.tar.gz
+        sha256: dab1b3aaa6146d73ec4d022d20ddf4be124c27d03a52ca2d9577f05336d3bf2e
   - name: wxmaxima
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
-      - -DWXM_DISABLE_WEBVIEW=on
+      - -DWXM_DISABLE_WEBVIEW=OFF
       - -DCMAKE_BUILD_TYPE=Release
     post-install:
       - rm -r /app/share/icons/hicolor/1024x1024
