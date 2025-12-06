@@ -54,18 +54,14 @@ modules:
       - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2 
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=OFF
-      - -DCMAKE_BUILD_TYPE=Release
+      # - -DCMAKE_BUILD_TYPE=Release
     post-install:
       - rm -r /app/share/icons/hicolor/1024x1024
-      - mkdir -p /app/share/fonts
-      - mv ../Helvetica.ttf /app/share/fonts/
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-25.04.0
-        commit: 9f609cef5183e50882e549ccb1c12a61b7de8628
-      - type: file
-        path: Helvetica.ttf
+        # tag: Version-25.04.0
+        commit: 7691d07e3f1aab00ce10ced43c2c7b0150b068b4
         
 cleanup-commands:
   - rm -r /app/include
