@@ -9,6 +9,7 @@ finish-args:
   - --filesystem=home:rw
   - --share=network
   - --env=PATH=/usr/bin:/app/bin:/app/plugins/maxima/bin
+  
 add-extensions:
   io.github.wxmaxima_developers.wxMaxima.Plugin:
     versions: stable;test;master
@@ -17,6 +18,9 @@ add-extensions:
     no-autodownload: false
     autodelete: true
     add-ld-path: lib
+    
+cleanup-commands:
+  - rm -r /app/include
 
 modules:
   - name: extensions
@@ -60,9 +64,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        # tag: Version-25.04.0
-        commit: 7691d07e3f1aab00ce10ced43c2c7b0150b068b4
-        
-cleanup-commands:
-  - rm -r /app/include
-  - rm /app/bin/wx-config /app/bin/wxrc /app/bin/wxrc-3.2
+        tag: Version-26.01.0
+        commit: 229f4f9aa7cbed62981da9ce0610cc027e6c12fb
