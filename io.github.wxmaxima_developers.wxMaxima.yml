@@ -5,7 +5,8 @@ sdk: org.gnome.Sdk
 command: wxmaxima
 finish-args:
   - --share=ipc
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --filesystem=home:rw
   - --share=network
   - --env=PATH=/usr/bin:/app/bin:/app/plugins/maxima/bin
