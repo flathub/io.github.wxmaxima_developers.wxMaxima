@@ -5,7 +5,8 @@ sdk: org.gnome.Sdk
 command: wxmaxima
 finish-args:
   - --share=ipc
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --filesystem=home:rw
   - --share=network
   - --env=PATH=/usr/bin:/app/bin:/app/plugins/maxima/bin
@@ -38,8 +39,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
-        commit: 8aef5f40b93958719771331ca03866b7b6fff6bf
-        tag: v3.2.8
+        commit: 18bf6488604eafc5cc0ec79890ddfdab3798a104
+        tag: v3.2.9
   - name: gnuplot
     buildsystem: autotools
     no-autogen: true
