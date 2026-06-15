@@ -1,6 +1,6 @@
 app-id: io.github.wxmaxima_developers.wxMaxima
 runtime: org.gnome.Platform
-runtime-version: "49"
+runtime-version: "50"
 sdk: org.gnome.Sdk
 command: wxmaxima
 finish-args:
@@ -65,5 +65,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-26.05.0
-        commit: 992dfe9fb18c6f816089a07396f436ac2cb62304
+        tag: Version-26.06.1
+        commit: bfea27d7ebd0440325fda9f79224af55f31a664b
