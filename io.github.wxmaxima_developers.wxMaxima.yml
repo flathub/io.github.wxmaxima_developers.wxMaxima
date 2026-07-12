@@ -39,8 +39,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxWidgets/wxWidgets.git
-        commit: db1005db3dea2c37a46fb455a9a02e37aa360751
-        tag: v3.3.2
+        commit: 670835aec7e54b9e9d5a50d6a1aea1e8ba0bcdb2
+        tag: v3.3.3
   - name: gnuplot
     buildsystem: autotools
     no-autogen: true
@@ -50,8 +50,8 @@ modules:
       - --without-latex  
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/gnuplot/6.0.3/gnuplot-6.0.3-c23.tar.gz
-        sha256: dab1b3aaa6146d73ec4d022d20ddf4be124c27d03a52ca2d9577f05336d3bf2e
+        url: https://prdownloads.sourceforge.net/gnuplot/6.0.4/gnuplot-6.0.4.tar.gz
+        sha256: 458d94769625e73d5f6232500f49cbadcb2b183380d43d2266a0f9701aeb9c5b
   - name: wxmaxima
     buildsystem: cmake-ninja
     builddir: true
@@ -65,5 +65,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-26.06.1
-        commit: bfea27d7ebd0440325fda9f79224af55f31a664b
+        tag: Version-26.07.0
+        commit: 1870598278603d83bc73c4269a0399378f623094
