@@ -37,10 +37,14 @@ modules:
       - --enable-webview
       - --enable-webviewwebkit
     sources:
-      - type: git
-        url: https://github.com/wxWidgets/wxWidgets.git
-        commit: 670835aec7e54b9e9d5a50d6a1aea1e8ba0bcdb2
-        tag: v3.3.3
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.3.3/wxWidgets-3.3.3.tar.bz2
+        sha256: sha256:81b09d6dd9f1ed9301f8c55a968a488d0491f264dc2bab19a7e407ac67009482
+        x-checker-data:
+          type: anitya
+          project-id: 5150
+          stable-only: true
+          url-template: https://github.com/wxWidgets/wxWidgets/releases/download/v$version/wxWidgets-$version.tar.bz2
   - name: gnuplot
     buildsystem: autotools
     no-autogen: true
