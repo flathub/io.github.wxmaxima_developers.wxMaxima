@@ -38,8 +38,8 @@ modules:
       - --enable-webviewwebkit
     sources:
       - type: archive
-        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.3.3/wxWidgets-3.3.3.tar.bz2
-        sha256: 81b09d6dd9f1ed9301f8c55a968a488d0491f264dc2bab19a7e407ac67009482
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.11/wxWidgets-3.2.11.tar.bz2
+        sha256: 6a129015bce2e914e4bf61ec4411854ad962801d47e92f2eb8340adb6a90af08
         x-checker-data:
           type: anitya
           project-id: 5150
@@ -73,8 +73,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-26.08.0
-        commit: 5b19f06d2469e8b8c59a489c85c41489568eb51f
+        tag: Version-26.09.0
+        commit: e8bbfd0bac26d14bc0607ae57d62063b911d9ca5
         x-checker-data:
           type: git
           is-main-source: true
