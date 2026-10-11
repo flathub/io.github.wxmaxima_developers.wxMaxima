@@ -73,9 +73,10 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-26.08.0
-        commit: 5b19f06d2469e8b8c59a489c85c41489568eb51f
+        tag: Version-26.09.0
+        commit: e8bbfd0bac26d14bc0607ae57d62063b911d9ca5
         x-checker-data:
           type: git
           is-main-source: true
+          is-important: true
           tag-pattern: ^Version-([\d.]+)$
