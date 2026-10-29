@@ -38,8 +38,8 @@ modules:
       - --enable-webviewwebkit
     sources:
       - type: archive
-        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.3.3/wxWidgets-3.3.3.tar.bz2
-        sha256: 81b09d6dd9f1ed9301f8c55a968a488d0491f264dc2bab19a7e407ac67009482
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.12/wxWidgets-3.2.12.tar.bz2
+        sha256: a62719bb5e1dcc41c1a6fc1eecd499c7ee8521f70402c7b1bb3342a1e16344e0
         x-checker-data:
           type: anitya
           project-id: 5150
@@ -54,8 +54,8 @@ modules:
       - --without-latex
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/gnuplot/6.0.5/gnuplot-6.0.5.tar.gz
-        sha256: 73237f37f03306d68bfae133a9a50d5e9341384e198d5ab37eeca9ab534deed8
+        url: https://prdownloads.sourceforge.net/gnuplot/6.0.6/gnuplot-6.0.6.tar.gz
+        sha256: 9d39d8499c9533550144092375aac45ba8bf0c18c9cee50897fe411b6d93004e
         x-checker-data:
           type: anitya
           project-id: 1216
@@ -73,8 +73,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-26.09.0
-        commit: e8bbfd0bac26d14bc0607ae57d62063b911d9ca5
+        tag: Version-26.10.0
+        commit: e613aba2bdc7a123f4b57ca7a5468ce57920030a
         x-checker-data:
           type: git
           is-main-source: true
