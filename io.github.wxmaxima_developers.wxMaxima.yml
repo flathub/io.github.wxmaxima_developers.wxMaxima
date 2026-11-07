@@ -54,8 +54,8 @@ modules:
       - --without-latex
     sources:
       - type: archive
-        url: https://prdownloads.sourceforge.net/gnuplot/6.0.5/gnuplot-6.0.5.tar.gz
-        sha256: 73237f37f03306d68bfae133a9a50d5e9341384e198d5ab37eeca9ab534deed8
+        url: https://prdownloads.sourceforge.net/gnuplot/6.0.6/gnuplot-6.0.6.tar.gz
+        sha256: 9d39d8499c9533550144092375aac45ba8bf0c18c9cee50897fe411b6d93004e
         x-checker-data:
           type: anitya
           project-id: 1216
@@ -64,7 +64,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.2
+      - -DwxWidgets_INCLUDE_DIRS=/app/include/wx-3.3
       - -DwxWidgets_LIBRARIES=/app/lib
       - -DWXM_DISABLE_WEBVIEW=OFF
       - -DCMAKE_BUILD_TYPE=Release
@@ -73,8 +73,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/wxMaxima-developers/wxmaxima.git
-        tag: Version-26.09.0
-        commit: e8bbfd0bac26d14bc0607ae57d62063b911d9ca5
+        tag: Version-26.10.0
+        commit: e613aba2bdc7a123f4b57ca7a5468ce57920030a
         x-checker-data:
           type: git
           is-main-source: true
